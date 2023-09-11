@@ -1,0 +1,32 @@
+
+// Fetching using promises...
+
+// fetch("https://fakestoreapi.com/products/categories")
+// .then((value)=>{
+//     return value.json();
+// })
+// .then(data=>{
+//     console.log(data)
+// })
+
+
+// Fetching using async await
+
+// let url="https://fakestoreapi.com/products/categories";
+// async function data(url){
+//     let result=await fetch(url);
+//     let response=await result.json();
+//     console.log(response)
+// }
+// data(url)
+
+// using callbacks
+
+function objectofURL(url,func){
+    let newURL=new URL(url);
+    func(newURL);
+}
+let url="https://fakestoreapi.com/products/categories";
+objectofURL(url,function(value){
+    console.log(value);
+})

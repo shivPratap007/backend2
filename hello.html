@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function callback(url){
+            return new Promise((resolve,reject)=>{
+                setTimeout(()=>{
+                    console.log("Downloading the data");
+                    console.log("This is the data");
+                    let data="Hero"
+                    resolve(data);
+                },6000)
+            })
+        }
+
+        let v=callback("google.com");
+        console.log(v)
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

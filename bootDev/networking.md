@@ -1,0 +1,4 @@
+- `IP address`=> the unique no the device over the internet.
+- `domain name`=> name given to the website which maps with the ip address. eg netflix.com
+- `subdomain`=> the prefix added in front of doamin name on which the other resources can be kept eg. boot.dev, api.boot.dev, blog.boot.dev;
+- `ports`=> server ko different sections me divide kar dete hai which perform the different work one may be holding api and other database. So to use the specific service port no. is given to different sections of the servers. To easily access the different sections.
