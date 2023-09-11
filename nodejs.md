@@ -20,3 +20,50 @@
 ## REST API
 
 - `Everything revolves around the resourse` => So in REST API everything revolves around the resources it means that the routes name must be self expalinatory. eg. "Belglore/movives/night";
+
+
+## Using static files in node.js
+
+`app.use('/',__dirname+'folder_name')` => only the folder in which contains index.html it automatically detects the index.html
+
+
+## Connecting to web sockets
+
+`const express=require("express");
+const http=require('http');
+const socketio=require('socket.io');
+
+const app=express();
+const server=http.createServer(app);
+const io=socketio(server);
+
+app.use('/',express.static(__dirname+'/public/')) 
+
+server.listen(7000,()=>{
+    console.log('App is running on port no. 7000');
+    
+})
+`
+
+- Write this in  public/index.js file
+- create `./public/index.html, ./public/index.js`
+- Add them in html code
+```
+ <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+```
+- Dont create /socket.io/socket.io.js file
+
+- Write this in public/index.js
+```
+var socket=io();
+```
+
+- Now add this in outer index.js
+```
+io.on('connection',(socket)=>{
+    console.log("A new user is connected");
+})
+
+```
+
