@@ -10,17 +10,16 @@ app.use('/',express.static(__dirname+'/public/'))
 
 
 io.on('connection',(socket)=>{
-    console.log("A new user is connected ",socket.id);
 
-    socket.emit("from_server",'This is the real message send from the server');
 
-    socket.on('from_client',()=>{
-        console.log("This message is from the client");
+    socket.on('from_client',(obj)=>{
+        console.log(obj.message);
+        //socket.emit('msg_recieved',obj); It will send the reply only to the one which has send the message
+        // io.emit('msg_recieved',obj); // It is going to send the obtained data to all the others who are join on this server
+        socket.broadcast.emit('msg_recieved',obj); // It will send the message to everyone except to the one which originally send the message
     })
 
-    setInterval(()=>{
-        socket.emit('from_server2');
-    },3000)
+    
 })
 
 server.listen(7000,()=>{

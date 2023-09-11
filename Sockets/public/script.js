@@ -1,18 +1,17 @@
-var socket=io();
-let btn=document.getElementById('btn');
+const socket=io();
 
-socket.on('from_server',(message)=>{
-    console.log('collected a new event from server');
-    const div=document.createElement('div');
-    div.innerHTML=message;
-    document.body.appendChild(div);
-})
+let btn=document.getElementById("btn");
+let msg=document.getElementById('msg');
+let list=document.getElementById('lst');
 
 btn.addEventListener('click',()=>{
-    socket.emit('from_client');
+    socket.emit('from_client',{
+        message:msg.value,
+    })
 })
 
-
-socket.on('from_server2',()=>{
-    console.log("Message recieved");
+socket.on('msg_recieved',(obj)=>{
+    let listmsg=document.createElement('li');
+    listmsg.innerText=obj.message;
+    list.appendChild(listmsg);
 })
